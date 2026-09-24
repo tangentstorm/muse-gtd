@@ -1,0 +1,40 @@
+# Personal identifiers — never commit real values.
+# Copy the .example.ts template and fill in your own.
+**/local-config.ts
+!**/local-config.example.ts
+
+# SQLite databases (the app creates these at runtime)
+/app.db
+/app.db-*
+**/app.db
+**/app.db-*
+*.sqlite
+*.sqlite-*
+
+# Dependencies
+node_modules/
+
+# Build output
+client/dist/
+client/dist-cvm/
+server/dist/
+.space-build/
+.space-build-cvm/
+
+# Caches
+.bun-cache/
+.bun/
+*.tsbuildinfo
+
+# Audits, harness output, debug scratch
+audits/
+.harness/
+dbg-test.tsx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
