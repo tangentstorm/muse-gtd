@@ -1,0 +1,17 @@
+{
+  "description": "Clean-room minimal implementation of the @hatch/space-sdk action-contract surface used by muse-gtd (standalone mode). Original code, MIT licensed. Not affiliated with the Muse web-artifact runtime SDK of the same name.",
+  "exports": {
+    ".": "./index.ts",
+    "./client": "./client.ts"
+  },
+  "license": "MIT",
+  "main": "./index.ts",
+  "name": "@hatch/space-sdk",
+  "peerDependencies": {
+    "zod": "4.4.3",
+    "drizzle-orm": "*"
+  },
+  "type": "module",
+  "types": "./index.ts",
+  "version": "0.12.0"
+}

@@ -25,6 +25,7 @@ server/dist/
 .bun-cache/
 .bun/
 *.tsbuildinfo
+**/.tsbuildinfo*
 
 # Audits, harness output, debug scratch
 audits/

@@ -230,7 +230,7 @@ const makeDailyWorkspace = (): Workspace => {
       { date: `${monthKey}-03`, passed: 0, total: 2 },
     ],
     weekly_items: [
-      { id: 1, name: "Continue Project24 video-course lessons and schedule study time", position: 0, archived_at: null, this_week_passed: null, streak: 0 },
+      { id: 1, name: "Example weekly activity", position: 0, archived_at: null, this_week_passed: null, streak: 0 },
     ],
     loaded_at: iso,
     row_count: rowCount,
@@ -810,7 +810,7 @@ test("2026.09.24.9 compact header, headline-free folders, and working folder con
   expect(schedule).not.toContain("month-grid");
   expect(schedule).toContain("RECURRING");
   expect(schedule).toContain("Weekly rhythm");
-  expect(schedule).toContain("Continue Project24 video-course lessons and schedule study time");
+  expect(schedule).toContain("Example weekly activity");
   expect(schedule).toContain('data-weekly-toggle="1"');
   expect(schedule).toContain("New weekly activity…");
   expect(schedule).toContain("Dated reminders");

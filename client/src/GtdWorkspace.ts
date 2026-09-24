@@ -285,7 +285,7 @@ const RELEASE_NOTES: ReleaseNote[] = [
     changes: [
       "Added a Weekly tab for recurring activities that need a place in the week without becoming daily habits.",
       "Weekly activities can be checked off once per Monday–Sunday week, with consecutive-week streaks and add/delete controls.",
-      "Added Project24 video-course study as the first weekly activity.",
+      "Added an example weekly activity to demonstrate the weekly rhythm.",
     ],
   },
   {
@@ -505,7 +505,7 @@ const RELEASE_NOTES: ReleaseNote[] = [
     version: "2026.09.15.6",
     date: "September 15, 2026",
     changes: [
-      "Added one client table with the anonymized identifiers DH/AP and VC/FR.",
+      "Added one client table with anonymized example identifiers.",
       "Client projects and next actions now show the clock-in rule without revealing real client identities.",
       "Projects can reference a client record instead of repeating client names.",
     ],

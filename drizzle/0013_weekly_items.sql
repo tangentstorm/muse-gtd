@@ -15,4 +15,4 @@ CREATE TABLE `weekly_results` (
 --> statement-breakpoint
 CREATE UNIQUE INDEX `weekly_results_item_week_unique` ON `weekly_results` (`item_id`, `result_week`);
 --> statement-breakpoint
-INSERT INTO `weekly_items` (`name`, `position`) VALUES ('Continue Project24 video-course lessons and schedule study time', 0);
+INSERT INTO `weekly_items` (`name`, `position`) VALUES ('Example weekly activity', 0);

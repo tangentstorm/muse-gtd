@@ -19,12 +19,31 @@ Prerequisites: [Bun](https://bun.sh) 1.3.10 or newer.
 bun install
 cp server/src/local-config.example.ts server/src/local-config.ts
 # edit server/src/local-config.ts: fill in your three Google Calendar IDs
-bun run build
+bun run check:local-config   # fails fast if the file is missing or incomplete
+bun run db:migrate            # create ./app.db (override with GTD_DB=/path/to.db)
+bun run build:standalone      # build the client bundle into client/dist
+bun run serve:standalone      # serve the app on http://127.0.0.1:8479
 ```
 
-`bun run build` runs the config check, the test suite, and the server + client builds. If `server/src/local-config.ts` is missing or incomplete, the build fails fast with a clear message telling you what to fill in.
+If `server/src/local-config.ts` is missing or incomplete, the config check fails
+fast with a clear message telling you what to fill in. (The `bun run build`
+script — config check, test suite, server + client builds — is the Muse
+web-artifact builder pipeline and runs under `artifact.edit`; for local runs
+use the `db:migrate` / `build:standalone` / `serve:standalone` scripts above.)
 
 Your data lives in `app.db` (SQLite, created at runtime, git-ignored). The schema is in `schema.sql`, with Drizzle migrations under `drizzle/`. Your real `local-config.ts` is git-ignored too — only the `.example.ts` template is committed, so cloning this repo never leaks anyone's identifiers.
+
+## About `vendor/space-sdk-shim`
+
+The app's action contracts (`defineAction`, the client RPC proxy, zod) were
+originally written against the Muse web-artifact runtime's `@hatch/space-sdk`,
+which isn't redistributable — so this repo vendors a clean-room,
+MIT-licensed minimal implementation of just the surface this app uses
+(`vendor/space-sdk-shim`, wired up as a `file:` dependency in
+`package.json`). It covers `defineAction` / `definePrivilegedContracts` /
+`definePrivilegedHandlers` / `createActionClient` and re-exports `zod`.
+Inside the real Muse artifact pipeline the platform SDK is used instead;
+the standalone server here only needs the shim.
 
 ## For Muse agents
 
@@ -38,7 +57,20 @@ This deploys as a Muse web artifact (see `space.json`: entry `client/dist/index.
 
 ## Screenshots
 
-Screenshots are on the way — being captured against a clean demo database.
+Captured in dark mode against a clean demo database (fake data, no real
+calendar connected — the Week view shows its honest "calendar unavailable"
+state without Google credentials):
+
+| View | Screenshot |
+| ---- | ---------- |
+| Today — inbox triage, priorities, scheduled blocks | ![Today](docs/screenshots/today.png) |
+| Week — Mon–Sun grid with intent blocks | ![Week](docs/screenshots/week.png) |
+| Future — daily checklist, tickler, weekly rhythm | ![Future](docs/screenshots/schedule.png) |
+| Inbox — capture triage | ![Inbox](docs/screenshots/inbox.png) |
+| Projects — project cards with next actions | ![Projects](docs/screenshots/project.png) |
+| Someday — maybe-later list | ![Someday](docs/screenshots/someday.png) |
+| Done — completed items by date | ![Done](docs/screenshots/done.png) |
+| Reference — notes and links | ![Reference](docs/screenshots/reference.png) |
 
 ## License
 

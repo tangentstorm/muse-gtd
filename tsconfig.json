@@ -1,0 +1,1 @@
+{"compilerOptions":{"baseUrl":".","paths":{"@space/privileged":["./server/.generated/privileged.contract.ts"]}},"extends":"./tsconfig.base.json"}

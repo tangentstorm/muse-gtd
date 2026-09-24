@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS `weekly_results` (
 CREATE UNIQUE INDEX IF NOT EXISTS `weekly_results_item_week_unique` ON `weekly_results` (`item_id`, `result_week`);
 --> statement-breakpoint
 INSERT INTO `weekly_items` (`name`, `position`)
-SELECT 'Continue Project24 video-course lessons and schedule study time', 0
+SELECT 'Example weekly activity', 0
 WHERE NOT EXISTS (
   SELECT 1 FROM `weekly_items`
-  WHERE `name` = 'Continue Project24 video-course lessons and schedule study time'
+  WHERE `name` = 'Example weekly activity'
 );
