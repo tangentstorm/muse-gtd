@@ -33,17 +33,13 @@ use the `db:migrate` / `build:standalone` / `serve:standalone` scripts above.)
 
 Your data lives in `app.db` (SQLite, created at runtime, git-ignored). The schema is in `schema.sql`, with Drizzle migrations under `drizzle/`. Your real `local-config.ts` is git-ignored too — only the `.example.ts` template is committed, so cloning this repo never leaks anyone's identifiers.
 
-## About `vendor/space-sdk-shim`
+## About `@hatch/space-sdk`
 
-The app's action contracts (`defineAction`, the client RPC proxy, zod) were
-originally written against the Muse web-artifact runtime's `@hatch/space-sdk`,
-which isn't redistributable — so this repo vendors a clean-room,
-MIT-licensed minimal implementation of just the surface this app uses
-(`vendor/space-sdk-shim`, wired up as a `file:` dependency in
-`package.json`). It covers `defineAction` / `definePrivilegedContracts` /
-`definePrivilegedHandlers` / `createActionClient` and re-exports `zod`.
-Inside the real Muse artifact pipeline the platform SDK is used instead;
-the standalone server here only needs the shim.
+The app's action contracts are written against the Muse web-artifact
+runtime's `@hatch/space-sdk`, resolved via
+`file:/opt/hatch/skills/spaces/ts-runtime/dist/space-sdk.tgz` — that path
+exists on every Muse runtime, so `bun install` just works there. (There is
+no need to vendor or replace it; other people's Muses run the same runtime.)
 
 ## For Muse agents
 
